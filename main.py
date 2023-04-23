@@ -48,8 +48,8 @@ print(tree)
 Phylo.draw_ascii(tree)
 
 bases = ["A", "C", "G", "T"]
-q=1/3*1/1000
-p=999/1000
+q=1/3*1/10000
+p=9999/10000
 P = np.array([[p, q, q, q],
               [q, p, q, q],
               [q, q, p, q],
@@ -68,7 +68,7 @@ seq_first_change=''
 
 #Symulacja mutacji
 for node in tree.get_nonterminals():
-    kroki=int(node.branch_length/100*1000)
+    kroki=int(node.branch_length/100*10000)
 
     if(len(tree.get_path(node))==0):
         seq=dna_seq
@@ -89,7 +89,7 @@ for node in tree.get_nonterminals():
 
 
 for node in tree.get_terminals():
-    kroki=int(node.branch_length/100*1000)
+    kroki=int(node.branch_length/100*10000)
 
     if(len(tree.get_path(node))==0):
         seq=dna_seq
@@ -154,7 +154,7 @@ print(tree_upgma)
 print(tree_nj)
 
 #Rysunki i zapisanie do plików
-Phylo.draw(tree_upgma)
+Phylo.draw(tree_upgma, do_show=False)
 plt.savefig('upgma_tree.jpg')
-Phylo.draw(tree_nj)
+Phylo.draw(tree_nj, do_show=False)
 plt.savefig('nj_tree.jpg')
